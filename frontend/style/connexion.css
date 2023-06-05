@@ -1,0 +1,21 @@
+body{
+    background-color: #161a21;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#connexion-div{
+    display: flex;
+    flex-direction: column;
+}
+
+#form-connexion{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#connexion-div{
+    background-color: #212735;
+}
