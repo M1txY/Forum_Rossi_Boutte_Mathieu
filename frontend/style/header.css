@@ -7,11 +7,14 @@ header nav ol {
   header nav ol li {
     display: inline;
     margin-right: 10px;
+  
   }
   
   header nav ol li a {
     text-decoration: none;
     color: white;
+    padding: 5px;
+    border: 1px solid transparent;
   }
 
   header nav ol li :hover{
