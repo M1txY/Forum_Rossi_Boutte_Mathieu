@@ -33,6 +33,7 @@ header nav ol {
   header{
     
     width: 100vw;
+    max-width: 100%;
     height: 10vh;
   }
 
