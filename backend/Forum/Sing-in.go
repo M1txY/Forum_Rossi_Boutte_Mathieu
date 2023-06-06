@@ -1,12 +1,16 @@
-package back_golang
+package Forum
 
 import (
+	"crypto/sha256"
 	"database/sql"
+	"encoding/hex"
 	"fmt"
 )
 
 func Signin(db *sql.DB, pseudo string, passwd string) {
 	listUser := ListeUser(db)
+	Pass := sha256.Sum256([]byte(passwd))
+	passwd = hex.EncodeToString(Pass[:])
 	for i := 0; i < len(listUser); i++ {
 		if pseudo == listUser[i].Pseudo.String && passwd == listUser[i].Passwd.String {
 			fmt.Println("succes")
