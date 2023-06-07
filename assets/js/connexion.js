@@ -15,17 +15,17 @@ function changePage(){
         <form id="form-creation" action="POST">
           <div class="form-content">
             <label for="email">e-mail:</label>
-            <input type="text" />
+            <input type="text" id="email"/>
           </div>
   
           <div id="form-pseudo" class="form-content">
             <label for="pseudo">Pseudo:</label>
-            <input type="text" />
+            <input type="text" id="pseudo" />
           </div>
   
           <div id="form-password" class="form-content">
             <label for="mdp">mot de passe :</label>
-            <input type="password" />
+            <input type="password" id="mdp" />
           </div>
   
          `
