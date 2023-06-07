@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/connexion.css" />
+    <link rel="stylesheet" href="/assets/css/creation.css">
     <link rel="stylesheet" href="/assets/css/header.css" />
     <title>connexion</title>
   </head>
@@ -40,18 +41,20 @@
       <form id="form-connexion" action="POST">
         <div class="form-content">
           <label for="email">e-mail:</label>
-          <input type="text" />
+          <input  type="text"  id="email"/>
         </div>
 
         <div class="form-content">
           <label for="mdp">mot de passe :</label>
-          <input type="password" />
+          <input type="password" id="mdp"/>
         </div>
 
         <input class="button" type="submit" value="valider" />
       </form>
       <p>Pas encore de compte ?</p>
-      <a class="button" href="create.html">créez en un</a>
+      <button id="switch-button">créer en un</button>
     </div>
+
+    <script src="/assets/js/connexion.js"></script>
   </body>
 </html>
