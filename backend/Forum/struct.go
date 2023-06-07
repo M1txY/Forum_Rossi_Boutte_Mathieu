@@ -1,4 +1,4 @@
-package back_golang
+package Forum
 
 import (
 	"database/sql"
