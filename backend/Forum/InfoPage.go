@@ -5,7 +5,10 @@ import (
 	"fmt"
 )
 
-func MainPage(db *sql.DB) {
+func MainPage(db *sql.DB) struct {
+	List []category
+	auth bool
+} {
 	data, err := db.Query("SELECT * from category")
 	if err != nil {
 		fmt.Print(err)
@@ -13,16 +16,20 @@ func MainPage(db *sql.DB) {
 	var ListeCat []category
 	for data.Next() {
 		var cat category
-		err := data.Scan(&cat.IDCat, &cat.Titre)
+		err := data.Scan(&cat.IDCat, &cat.Titre, &cat.url)
 		if err != nil {
 			panic(err.Error())
 		}
 		ListeCat = append(ListeCat, cat)
-		fmt.Println(ListeCat)
 	}
-
-	var CatStruct = struct{ ListCat []category }{ListeCat}
-	fmt.Println(CatStruct)
+	var CatStruct = struct {
+		List []category
+		auth bool
+	}{
+		ListeCat,
+		false,
+	}
+	return CatStruct
 }
 
 func TopicByCat(db *sql.DB, id_cat int) {
@@ -38,7 +45,6 @@ func TopicByCat(db *sql.DB, id_cat int) {
 			panic(err.Error())
 		}
 		listTopic = append(listTopic, Topic)
-		fmt.Println(listTopic)
 	}
 
 }
@@ -57,6 +63,5 @@ func MesssageForTopic(db *sql.DB, id_topic int) {
 			panic(err.Error())
 		}
 		listTopic = append(listTopic, Topic)
-		fmt.Println(listTopic)
 	}
 }
