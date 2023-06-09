@@ -7,25 +7,25 @@ let connexionPage = true;
 
 button.addEventListener("click", changePage);
 
-function changePage() {
-  console.log("click");
-  if (connexionPage === true) {
-    conteneur.innerHTML = "";
-    let content = `
+function changePage(){
+    console.log("click")
+    if(connexionPage===true){
+    conteneur.innerHTML="";
+        let content = `
         <form id="form-creation" action="POST">
           <div class="form-content">
             <label for="email">e-mail:</label>
-            <input type="text" id="email"/>
+            <input name="mail" type="text" id="email"/>
           </div>
   
           <div id="form-pseudo" class="form-content">
             <label for="pseudo">Pseudo:</label>
-            <input type="text" id="pseudo" />
+            <input type="text" name="pseudo" id="pseudo" />
           </div>
   
           <div id="form-password" class="form-content">
             <label for="mdp">mot de passe :</label>
-            <input type="password" id="mdp" />
+            <input type="password" name="passwd" id="mdp" />
           </div>
   
          `;

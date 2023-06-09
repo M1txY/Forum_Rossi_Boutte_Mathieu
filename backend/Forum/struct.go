@@ -46,4 +46,5 @@ type contains struct {
 type category struct {
 	IDCat int
 	Titre sql.NullString
+	url   sql.NullString
 }
