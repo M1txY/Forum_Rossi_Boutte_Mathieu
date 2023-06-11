@@ -8,7 +8,7 @@ import (
 )
 
 func CreateTopic(db *sql.DB, titre string, date string, idUser int, id_cat int) {
-	data, err := db.Exec("INSERT INTO topic(titre, Date_création, id_user) VALUES (?,TIMESTAMP ,?)", titre, string(idUser))
+	data, err := db.Exec("INSERT INTO topic(titre, Date_creation, id_user) VALUES (?,? ,?)", titre, date, idUser)
 	if err != nil {
 		fmt.Print(err)
 	}
@@ -17,13 +17,16 @@ func CreateTopic(db *sql.DB, titre string, date string, idUser int, id_cat int) 
 	if err != nil {
 		fmt.Println(err)
 	}
-	var nb_topic int
+	var nbTopic int
 	for result.Next() {
-
-		fmt.Println(result.Scan(&nb_topic))
-		fmt.Println(nb_topic)
+		result.Scan(&nbTopic)
 	}
-	db.Exec("INSERT INTO `own`(`id_topic`, `id_cat`) values (?,?)", string(nb_topic+1), string(id_cat))
+	fmt.Println("nb :")
+	fmt.Println(nbTopic)
+	_, erreur := db.Exec("INSERT INTO `own`(`id_topic`, `id_cat`) values (?,?)", nbTopic, id_cat)
+	if erreur != nil {
+		fmt.Println(erreur)
+	}
 }
 
 func CreateUser(db *sql.DB, Pseudo string, Passwd string, mail string) {
@@ -37,7 +40,7 @@ func CreateUser(db *sql.DB, Pseudo string, Passwd string, mail string) {
 		}
 	}
 }
-func CreateMessage(db *sql.DB, contenu string, id_user int, id_topic int) {
+func CreateMessage(db *sql.DB, contenu string, date string, id_user int, id_topic int) {
 	data, err := db.Exec("INSERT INTO user(Contenu, Date_creation, id_user) VALUES(?,TIMESTAMP ,?)", contenu, id_user)
 
 	if err != nil {
@@ -53,5 +56,5 @@ func CreateMessage(db *sql.DB, contenu string, id_user int, id_topic int) {
 		fmt.Println(result.Scan(&nb_message))
 		fmt.Println(nb_message)
 	}
-	db.Exec("INSERT INTO `contain`(`id_topic`, `id_mess`) values (?,?)", string(id_topic), string(nb_message+1))
+	db.Exec("INSERT INTO `contain`(`id_topic`, `id_mess`) values (?,?)", id_topic, nb_message)
 }

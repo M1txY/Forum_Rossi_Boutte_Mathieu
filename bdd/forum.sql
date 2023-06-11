@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 09 juin 2023 à 15:58
+-- Généré le : dim. 11 juin 2023 à 23:42
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -11,9 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-DROP DATABASE IF EXISTS forum; 
-CREATE DATABASE forum;
-USE forum; 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,6 +20,8 @@ USE forum;
 --
 -- Base de données : `forum`
 --
+CREATE DATABASE IF NOT EXISTS `forum` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `forum`;
 
 -- --------------------------------------------------------
 
@@ -93,6 +92,18 @@ CREATE TABLE `own` (
   `id_cat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
+--
+-- Déchargement des données de la table `own`
+--
+
+INSERT INTO `own` (`id_topic`, `id_cat`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 3),
+(5, 2),
+(6, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -116,6 +127,18 @@ CREATE TABLE `topic` (
   `Date_creation` datetime DEFAULT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+--
+-- Déchargement des données de la table `topic`
+--
+
+INSERT INTO `topic` (`id_topic`, `titre`, `Date_creation`, `id_user`) VALUES
+(1, 'play off', '2023-06-09 16:45:24', 6),
+(2, 'l\'airsoft c\'es bien', '2023-06-09 16:45:24', 7),
+(3, 'fin de saison', '2023-06-09 16:45:24', 8),
+(4, 'messi au US', '2023-06-09 16:45:24', 9),
+(5, 'comment débuté', '2023-06-09 16:45:24', 9),
+(6, 'les lakers pas en final', '2023-06-09 16:45:24', 9);
 
 -- --------------------------------------------------------
 
@@ -218,7 +241,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT pour la table `topic`
 --
 ALTER TABLE `topic`
-  MODIFY `id_topic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_topic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `user`

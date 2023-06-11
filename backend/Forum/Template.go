@@ -18,7 +18,7 @@ func LandinPage(w http.ResponseWriter, r *http.Request) {
 
 	tmpl_index := template.Must(template.ParseFiles("../frontend/pages/index.html"))
 	data := MainPage(db)
-	c, erreur := r.Cookie("auth")
+	c, erreur := r.Cookie("id_user")
 	fmt.Println(c)
 	if erreur != nil {
 		fmt.Println(erreur)
@@ -48,11 +48,11 @@ func LoginPage(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(pseudo)
 		fmt.Println(passwd)
 		if pseudo == "" {
-			verif := Signin(db, mail, passwd)
+			verif, id := Signin(db, mail, passwd)
 			if verif {
 				http.SetCookie(w, &http.Cookie{
-					Name:  "auth",
-					Value: "true",
+					Name:  "id_user",
+					Value: string(rune(id)),
 				})
 			}
 		}
