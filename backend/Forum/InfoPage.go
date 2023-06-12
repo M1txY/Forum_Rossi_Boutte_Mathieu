@@ -6,8 +6,9 @@ import (
 )
 
 func MainPage(db *sql.DB) struct {
-	List []category
-	auth bool
+	ListCat   []category
+	ListTopic []topic
+	Auth      bool
 } {
 	data, err := db.Query("SELECT * from category")
 	if err != nil {
@@ -16,17 +17,32 @@ func MainPage(db *sql.DB) struct {
 	var ListeCat []category
 	for data.Next() {
 		var cat category
-		err := data.Scan(&cat.IDCat, &cat.Titre, &cat.url)
+		err := data.Scan(&cat.IDCat, &cat.Titre, &cat.Url)
 		if err != nil {
 			panic(err.Error())
 		}
 		ListeCat = append(ListeCat, cat)
 	}
+	Top, err := db.Query("SELECT * from topic")
+	if err != nil {
+		fmt.Print(err)
+	}
+	var listTopic []topic
+	for Top.Next() {
+		var Topic topic
+		err := Top.Scan(&Topic.IDTopic, &Topic.Titre, &Topic.DateCreation, &Topic.IDUser)
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		listTopic = append(listTopic, Topic)
+	}
 	var CatStruct = struct {
-		List []category
-		auth bool
+		ListCat   []category
+		ListTopic []topic
+		Auth      bool
 	}{
 		ListeCat,
+		listTopic,
 		false,
 	}
 	return CatStruct
@@ -51,7 +67,7 @@ func TopicByCat(db *sql.DB, id_cat int) {
 
 func MesssageForTopic(db *sql.DB, id_topic int) {
 
-	data, err := db.Query("SELECT * FROM message as m JOIN contains as c ON m.id_mess=c.id_mess JOIN topic as t ON t.id_topic= c.id_topic WHERE t.id_topic =?", string(id_topic))
+	data, err := db.Query("SELECT * FROM message as m JOIN contains as c ON m.id_mess=c.id_mess JOIN topic as t ON t.id_topic= c.id_topic WHERE t.id_topic =?", id_topic)
 	if err != nil {
 		fmt.Print(err)
 	}
