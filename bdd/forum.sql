@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 11 juin 2023 à 23:42
+-- Généré le : lun. 12 juin 2023 à 19:20
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -40,9 +40,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id_cat`, `titre`, `url`) VALUES
-(1, 'basketball', NULL),
-(2, 'tir sportif', NULL),
-(3, 'football', NULL);
+(1, 'basketball', '../../assets/img/basket.png'),
+(2, 'tir sportif', '../../assets/img/logo-tir-sportif.png'),
+(3, 'football', '../../assets/img/foot.png');
 
 -- --------------------------------------------------------
 
@@ -133,12 +133,12 @@ CREATE TABLE `topic` (
 --
 
 INSERT INTO `topic` (`id_topic`, `titre`, `Date_creation`, `id_user`) VALUES
-(1, 'play off', '2023-06-09 16:45:24', 6),
-(2, 'l\'airsoft c\'es bien', '2023-06-09 16:45:24', 7),
-(3, 'fin de saison', '2023-06-09 16:45:24', 8),
-(4, 'messi au US', '2023-06-09 16:45:24', 9),
-(5, 'comment débuté', '2023-06-09 16:45:24', 9),
-(6, 'les lakers pas en final', '2023-06-09 16:45:24', 9);
+(1, 'play off', '2023-06-09 00:00:00', 6),
+(2, 'l\'airsoft c\'es bien', '2023-06-09 00:00:00', 7),
+(3, 'fin de saison', '2023-06-09 00:00:00', 8),
+(4, 'messi au US', '2023-06-09 00:00:00', 9),
+(5, 'comment débuté', '2023-06-09 00:00:00', 9),
+(6, 'les lakers pas en final', '2023-06-09 00:00:00', 9);
 
 -- --------------------------------------------------------
 
