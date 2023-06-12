@@ -6,11 +6,12 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func LandinPage(w http.ResponseWriter, r *http.Request) {
 	db, err := sql.Open("mysql",
-		"root@tcp(127.0.0.1:3306)/forum")
+		"root@tcp(127.0.0.1:3306)/forum?parseTime=true")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -23,7 +24,7 @@ func LandinPage(w http.ResponseWriter, r *http.Request) {
 	if erreur != nil {
 		fmt.Println(erreur)
 	} else if c.Value != "" {
-		data.auth = true
+		data.Auth = true
 	}
 	erre := tmpl_index.Execute(w, data)
 	if erre != nil {
@@ -49,10 +50,12 @@ func LoginPage(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(passwd)
 		if pseudo == "" {
 			verif, id := Signin(db, mail, passwd)
+			idString := strconv.Itoa(id)
+			fmt.Println(idString)
 			if verif {
 				http.SetCookie(w, &http.Cookie{
 					Name:  "id_user",
-					Value: string(rune(id)),
+					Value: "" + idString + "",
 				})
 			}
 		}
