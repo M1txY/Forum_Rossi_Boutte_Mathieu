@@ -5,47 +5,48 @@ import (
 	"time"
 )
 
-type user struct {
+type User struct {
 	IDUser int
 	Pseudo sql.NullString
 	Passwd sql.NullString
 	Mail   sql.NullString
 }
 
-type topic struct {
+type Topic struct {
 	IDTopic            int
 	Titre              sql.NullString
 	DateCreation       time.Time
 	DateCreationString string
 	IDUser             int
 }
-type reponse struct {
+type Reponse struct {
 	IDMess  int
 	IDMess1 int
 }
-type own struct {
+type Own struct {
 	IDTopic int
 	IDCat   int
 }
-type message struct {
-	IDMess       int
-	Contenu      sql.NullString
-	Update       time.Time
-	NombreLike   sql.NullInt64
-	DateCreation time.Time
-
-	IDUser int
+type Message struct {
+	IDMess            int
+	Contenu           sql.NullString
+	Update            time.Time
+	UpdateParse       string
+	NombreLike        sql.NullInt64
+	DateCreation      time.Time
+	DateCreationParse string
+	IDUser            int
 }
-type liker struct {
+type Liker struct {
 	IDUser int
 	IDMess int
 }
 
-type contains struct {
+type Contains struct {
 	IDTopic int
 	IDMess  int
 }
-type category struct {
+type Category struct {
 	IDCat int
 	Titre sql.NullString
 	Url   sql.NullString
