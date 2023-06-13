@@ -64,4 +64,6 @@ header nav ol {
     margin-right: 20%;
   }
 
- 
+ .logo{
+  max-height: 50px;
+ }

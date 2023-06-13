@@ -38,6 +38,11 @@ func LoginPage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	var data = struct {
+		Auth bool
+	}{
+		false,
+	}
 	defer db.Close()
 	fmt.Println(r.Method)
 	tmpl_index := template.Must(template.ParseFiles("../frontend/pages/connexion.html"))
@@ -57,10 +62,11 @@ func LoginPage(w http.ResponseWriter, r *http.Request) {
 					Name:  "id_user",
 					Value: "" + idString + "",
 				})
+				data.Auth = true
 			}
 		}
 	}
-	erre := tmpl_index.Execute(w, nil)
+	erre := tmpl_index.Execute(w, data)
 	if erre != nil {
 		fmt.Print(erre)
 	}

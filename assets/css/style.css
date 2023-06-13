@@ -72,3 +72,15 @@ body{
 .box_ctn:hover{
     background-color: #3b84df;
 }
+
+#plus-div{
+    height:150px ;
+    width:150px ;
+    float: right;
+}
+
+#plus{
+    height: 90%;
+    width: 90%;
+    
+}
