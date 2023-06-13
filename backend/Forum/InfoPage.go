@@ -31,6 +31,7 @@ func MainPage(db *sql.DB) struct {
 	for Top.Next() {
 		var Topic topic
 		err := Top.Scan(&Topic.IDTopic, &Topic.Titre, &Topic.DateCreation, &Topic.IDUser)
+		Topic.DateCreationString = Topic.DateCreation.Format("2006-01-02 15:04:05")
 		if err != nil {
 			fmt.Println(err.Error())
 		}

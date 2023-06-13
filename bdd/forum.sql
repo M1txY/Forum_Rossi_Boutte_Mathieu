@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 12 juin 2023 à 19:20
+-- Généré le : mar. 13 juin 2023 à 15:50
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -42,7 +42,13 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id_cat`, `titre`, `url`) VALUES
 (1, 'basketball', '../../assets/img/basket.png'),
 (2, 'tir sportif', '../../assets/img/logo-tir-sportif.png'),
-(3, 'football', '../../assets/img/foot.png');
+(3, 'football', '../../assets/img/foot.png'),
+(4, 'handball', '../../assets/img/handball.jpg'),
+(5, 'rugby', '../../assets/img/rugby.jpg'),
+(6, 'volley', '../../assets/img/volley.jpg'),
+(7, 'tennis', '../../assets/img/tennis.jpg'),
+(8, 'badminton', '../../assets/img/badminton.jpg'),
+(9, 'Sport Auto', '../../assets/img/Sport-auto.png');
 
 -- --------------------------------------------------------
 
@@ -229,7 +235,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `message`

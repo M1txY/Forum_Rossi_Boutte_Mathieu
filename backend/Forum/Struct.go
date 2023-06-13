@@ -13,10 +13,11 @@ type user struct {
 }
 
 type topic struct {
-	IDTopic      int
-	Titre        sql.NullString
-	DateCreation time.Time
-	IDUser       int
+	IDTopic            int
+	Titre              sql.NullString
+	DateCreation       time.Time
+	DateCreationString string
+	IDUser             int
 }
 type reponse struct {
 	IDMess  int
@@ -32,7 +33,8 @@ type message struct {
 	Update       time.Time
 	NombreLike   sql.NullInt64
 	DateCreation time.Time
-	IDUser       int
+
+	IDUser int
 }
 type liker struct {
 	IDUser int
