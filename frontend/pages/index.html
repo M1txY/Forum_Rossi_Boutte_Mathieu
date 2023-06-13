@@ -20,7 +20,7 @@
             <li><a href="#">Services</a></li>
             <li><a href="condition.html">Conditions</a></li>
           </ol>
-        </nav>
+        </nav>    
       </div>
       <div id="connexion-header-menu" class="header-content">
         {{if eq .Auth false}}
@@ -39,10 +39,10 @@
   </header>
 <div class="forum_ctn">
     {{if eq .Auth true}}
-    <div id="plus-div">
+    <button id="plus-div">
       <img id="plus" src="/assets/img/bouton-plus.png" alt="bouton plus">
       <p>créer un topic</p>
-    </div>
+    </button>
     {{end}}
     <h1>Catégorie</h1>
     {{range .ListCat}}
@@ -72,6 +72,10 @@
 
 </div>
 
+
+
+<div id="btn_topic" class="topic_ctn_unactive"></div>
+
 <footer>
 
     <div id="footer">
@@ -88,6 +92,7 @@
 
 </footer>
 
-<script src="/frontend/js/forum.js"></script>
+<script src="frontend/js/forum.js"></script>
+<script src="/assets/js/topic_btn.js"></script>
 </body>
 </html>
