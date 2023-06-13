@@ -19,14 +19,14 @@ func verif_user(db *sql.DB, pseudo string, mail string) bool {
 	return true
 }
 
-func ListeUser(db *sql.DB) []user {
+func ListeUser(db *sql.DB) []User {
 	data, err := db.Query("SELECT * from user")
 	if err != nil {
 		fmt.Println(err)
 	}
-	var ListeUser []user
+	var ListeUser []User
 	for data.Next() {
-		var User user
+		var User User
 		err := data.Scan(&User.IDUser, &User.Pseudo, &User.Passwd, &User.Mail)
 		if err != nil {
 			panic(err.Error())

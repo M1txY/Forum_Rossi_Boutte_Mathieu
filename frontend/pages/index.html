@@ -57,8 +57,8 @@
     {{end}}
     <h1>Topic</h1>
     {{range .ListTopic}}
-    <form action="" method="get">
-        <button type="submit" value="{{.IDTopic}}" class="box_ctn">
+    <form action="/topic" method="get">
+        <button type="submit" name="Id" value="{{.IDTopic}}" class="box_ctn">
             <div class="box_content">
                 <h3>{{.Titre.String}}</h3>
                 <h4 >{{.DateCreationString}}</h4>

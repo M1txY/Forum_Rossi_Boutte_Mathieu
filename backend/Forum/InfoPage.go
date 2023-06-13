@@ -6,17 +6,17 @@ import (
 )
 
 func MainPage(db *sql.DB) struct {
-	ListCat   []category
-	ListTopic []topic
+	ListCat   []Category
+	ListTopic []Topic
 	Auth      bool
 } {
 	data, err := db.Query("SELECT * from category")
 	if err != nil {
 		fmt.Print(err)
 	}
-	var ListeCat []category
+	var ListeCat []Category
 	for data.Next() {
-		var cat category
+		var cat Category
 		err := data.Scan(&cat.IDCat, &cat.Titre, &cat.Url)
 		if err != nil {
 			panic(err.Error())
@@ -27,19 +27,19 @@ func MainPage(db *sql.DB) struct {
 	if err != nil {
 		fmt.Print(err)
 	}
-	var listTopic []topic
+	var listTopic []Topic
 	for Top.Next() {
-		var Topic topic
-		err := Top.Scan(&Topic.IDTopic, &Topic.Titre, &Topic.DateCreation, &Topic.IDUser)
-		Topic.DateCreationString = Topic.DateCreation.Format("2006-01-02 15:04:05")
+		var topic Topic
+		err := Top.Scan(&topic.IDTopic, &topic.Titre, &topic.DateCreation, &topic.IDUser)
+		topic.DateCreationString = topic.DateCreation.Format("2006-01-02 15:04:05")
 		if err != nil {
 			fmt.Println(err.Error())
 		}
-		listTopic = append(listTopic, Topic)
+		listTopic = append(listTopic, topic)
 	}
 	var CatStruct = struct {
-		ListCat   []category
-		ListTopic []topic
+		ListCat   []Category
+		ListTopic []Topic
 		Auth      bool
 	}{
 		ListeCat,
@@ -54,9 +54,9 @@ func TopicByCat(db *sql.DB, id_cat int) {
 	if err != nil {
 		fmt.Print(err)
 	}
-	var listTopic []topic
+	var listTopic []Topic
 	for data.Next() {
-		var Topic topic
+		var Topic Topic
 		err := data.Scan(&Topic.IDTopic, &Topic.Titre, &Topic.IDUser, &Topic.DateCreation)
 		if err != nil {
 			panic(err.Error())
@@ -66,19 +66,36 @@ func TopicByCat(db *sql.DB, id_cat int) {
 
 }
 
-func MesssageForTopic(db *sql.DB, id_topic int) {
+func MesssageForTopic(db *sql.DB, id_topic int) struct {
+	Liste   []Message
+	Auth    bool
+	Reponse string
+} {
 
 	data, err := db.Query("SELECT * FROM message as m JOIN contains as c ON m.id_mess=c.id_mess JOIN topic as t ON t.id_topic= c.id_topic WHERE t.id_topic =?", id_topic)
 	if err != nil {
 		fmt.Print(err)
 	}
-	var listTopic []topic
+	var listMessage []Message
 	for data.Next() {
-		var Topic topic
-		err := data.Scan(&Topic.IDTopic, &Topic.Titre, &Topic.IDUser, &Topic.DateCreation)
+		var mess Message
+		err := data.Scan(&mess.IDMess, &mess.Contenu, &mess.IDUser, &mess.DateCreation, &mess.NombreLike, &mess.Update)
+		mess.DateCreationParse = mess.DateCreation.Format("2006-01-02 15:04:05")
+		mess.UpdateParse = mess.Update.Format("2006-01-02 15:04:05")
 		if err != nil {
 			panic(err.Error())
 		}
-		listTopic = append(listTopic, Topic)
+		listMessage = append(listMessage, mess)
 	}
+
+	var MessStruct = struct {
+		Liste   []Message
+		Auth    bool
+		Reponse string
+	}{
+		listMessage,
+		false,
+		"",
+	}
+	return MessStruct
 }

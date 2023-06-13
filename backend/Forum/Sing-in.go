@@ -8,7 +8,7 @@ import (
 	"regexp"
 )
 
-func Signin(db *sql.DB, pseudo string, passwd string) (bool, int) {
+func Signin(db *sql.DB, pseudo string, passwd string) (bool, int, string) {
 	listUser := ListeUser(db)
 	Pass := sha256.Sum256([]byte(passwd))
 	passwd = hex.EncodeToString(Pass[:])
@@ -34,12 +34,12 @@ func Signin(db *sql.DB, pseudo string, passwd string) (bool, int) {
 		}
 	}
 	fmt.Println(err)
-	return verif, id_user
+	return verif, id_user, err
 }
 
 func VerifInpt(mail string, pseudo string, mdp string) (bool, string) {
 
-	MailVerif := regexp.MustCompile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`).MatchString(mail)
+	MailVerif := regexp.MustCompile(`^[0-9A-Za-z_%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`).MatchString(mail)
 	PseudoVerif := regexp.MustCompile("[0-9A-Za-z_]").MatchString(pseudo)
 	MdpVerif := regexp.MustCompile(`[0-9A-Za-z_%+@&$]`).MatchString(pseudo)
 	str, Bo := "", false
@@ -64,14 +64,16 @@ func VerifInpt(mail string, pseudo string, mdp string) (bool, string) {
 	return Bo, str
 }
 
-func Register(db *sql.DB, pseudo string, passwd string, mail string) {
+func Register(db *sql.DB, pseudo string, passwd string, mail string) string {
 	Inpt, err := VerifInpt(mail, pseudo, passwd)
 	if Inpt {
 		if verif_user(db, pseudo, mail) {
 			CreateUser(db, pseudo, passwd, mail)
+			return "tout ok"
 		}
 	} else if err != "" {
 		fmt.Println(err)
+		return err
 	}
-
+	return ""
 }

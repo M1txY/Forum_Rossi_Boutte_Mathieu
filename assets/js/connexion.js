@@ -27,7 +27,7 @@ function changePage(){
             <label for="mdp">mot de passe :</label>
             <input type="password" name="passwd" id="mdp" />
           </div>
-  
+          <button type="submit">Crée un compte </button>
          `;
 
     title.innerHTML = "";
