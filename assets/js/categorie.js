@@ -15,19 +15,7 @@ function displayNewCat() {
 function submitData() {
   let message = messageInput.value;
   let title = titleInput.value;
-
-  topicList.innerHTML += `
-    <div class="box_ctn">
-      
-      <div class="box_content">
-        <h3>${title}</h3>
-        <div class="content-ctn">
-          <p>${message}</p>
-        </div>
-      </div>
-    </div>`;
-
-  newTopic.style.display = 'none';
+  newTopic.style.display = 'block';
   messageInput.value = '';
   titleInput.value = '';
 }
