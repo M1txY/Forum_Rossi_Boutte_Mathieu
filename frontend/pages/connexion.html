@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../assets/css/connexion.css" />
-    <link rel="stylesheet" href="../../assets/css/creation.css">
+    <link rel="stylesheet" href="../../assets/css/creation.css" />
     <link rel="stylesheet" href="../../assets/css/header.css" />
     <title>connexion</title>
   </head>
@@ -38,29 +38,27 @@
       </div>
       <div id="header-transition"></div>
     </header>
- {{if eq .Auth false}}
+    {{if eq .Auth false}}
     <div id="connexion-div">
       <h1>Connectez-vous</h1>
 
       <form id="form-connexion" method="POST">
         <div class="form-content">
           <label for="email">pseudo:</label>
-          <input  type="text" name="pseudo" id="email"/>
+          <input type="text" name="pseudo" id="email" />
         </div>
 
         <div class="form-content">
           <label for="mdp">mot de passe :</label>
-          <input type="password" name="passwd" id="mdp"/>
+          <input type="password" name="passwd" id="mdp" />
         </div>
-
-       
 
         <input class="button" type="submit" value="valider" />
       </form>
       <p>Pas encore de compte ?</p>
       <button id="switch-button">créer en un</button>
     </div>
-    {{else if eq .Auth  true}}
+    {{else if eq .Auth true}}
     <div id="connexion-div" class="true">
       <p>vous êtes connecté</p>
     </div>
