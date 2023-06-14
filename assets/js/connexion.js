@@ -53,14 +53,15 @@ function changePage() {
     let content = `
       <form id="form-connexion" action="POST">
         <div class="form-content">
-          <label for="email">e-mail:</label>
-          <input  type="text"  id="email"/>
+          <label for="email">pseudo:</label>
+          <input name="pseudo"   type="text"  id="email"/>
         </div>
 
         <div class="form-content">
           <label for="mdp">mot de passe :</label>
-          <input type="password" id="mdp"/>
+          <input name="passwd" type="password" id="mdp"/>
         </div>
+         <button class="button" type="submit" value="valider">Valider</button>
       </form>
     `;
 

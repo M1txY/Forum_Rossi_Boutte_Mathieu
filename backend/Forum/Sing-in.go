@@ -14,10 +14,8 @@ func Signin(db *sql.DB, pseudo string, passwd string) (bool, int, string) {
 	passwd = hex.EncodeToString(Pass[:])
 	err := ""
 	id_user := 0
-	fmt.Println(passwd)
 	verif := false
 	for i := 0; i < len(listUser); i++ {
-		fmt.Println("2:" + listUser[i].Passwd.String)
 		if pseudo == listUser[i].Pseudo.String && passwd == listUser[i].Passwd.String {
 			err = "succes"
 			verif = true

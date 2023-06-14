@@ -49,7 +49,11 @@ func MainPage(db *sql.DB) struct {
 	return CatStruct
 }
 
-func TopicByCat(db *sql.DB, id_cat int) {
+func TopicByCat(db *sql.DB, id_cat int) struct {
+	ListeTopic []Topic
+	Auth       bool
+	Reponse    string
+} {
 	data, err := db.Query("SELECT * from topic as t JOIN own as o ON t.id_topic= o.id_topic  JOIN category as c ON c.id_cat =o.id_cat  WHERE c.id_cat =?", string(id_cat))
 	if err != nil {
 		fmt.Print(err)
@@ -63,7 +67,16 @@ func TopicByCat(db *sql.DB, id_cat int) {
 		}
 		listTopic = append(listTopic, Topic)
 	}
-
+	var TopicStruct = struct {
+		ListeTopic []Topic
+		Auth       bool
+		Reponse    string
+	}{
+		listTopic,
+		false,
+		"",
+	}
+	return TopicStruct
 }
 
 func MesssageForTopic(db *sql.DB, id_topic int) struct {

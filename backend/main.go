@@ -8,9 +8,11 @@ import (
 )
 
 func main() {
+
 	http.HandleFunc("/", Forum.LandinPage)
 	http.HandleFunc("/login", Forum.LoginPage)
 	http.HandleFunc("/topic", Forum.TopicPAge)
+	http.HandleFunc("/categories", Forum.CatPage)
 	fs := http.FileServer(http.Dir("../assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	err := http.ListenAndServe(":8080", nil)

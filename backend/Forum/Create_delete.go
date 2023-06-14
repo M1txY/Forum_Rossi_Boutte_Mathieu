@@ -41,7 +41,7 @@ func CreateUser(db *sql.DB, Pseudo string, Passwd string, mail string) {
 	}
 }
 func CreateMessage(db *sql.DB, contenu string, date string, id_user int, id_topic int) {
-	data, err := db.Exec("INSERT INTO user(Contenu, Date_creation, id_user) VALUES(?,TIMESTAMP ,?)", contenu, id_user)
+	data, err := db.Exec("INSERT INTO message(Contenu, Date_creation, id_user) VALUES(?,? ,?)", contenu, date, id_user)
 
 	if err != nil {
 		fmt.Print(err)

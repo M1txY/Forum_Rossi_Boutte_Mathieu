@@ -11,45 +11,45 @@
 <body>
 <header>
     <div id="header-content" class="header-content">
-      <div id="header-menu">
-        <img class="logo" src="/assets/img/pngegg.png" alt="logo" />
-        <nav>
-          <ol>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="condition.html">Conditions</a></li>
-          </ol>
-        </nav>    
-      </div>
-      <div id="connexion-header-menu" class="header-content">
-        {{if eq .Auth false}}
-        <nav>
-          <ol>
-            <li id="log">se connecter</li>
-            <li id="create">créer un compte</li>
-          </ol>
-        </nav>
-        {{else if eq .Auth true}}
-        <p>connecté</p>
-        {{end}}
-      </div>
+        <div id="header-menu">
+            <img class="logo" src="/assets/img/pngegg.png" alt="logo"/>
+            <nav>
+                <ol>
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="condition.html">Conditions</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div id="connexion-header-menu" class="header-content">
+            {{if eq .Auth false}}
+            <nav>
+                <ol>
+                    <li id="log">se connecter</li>
+                    <li id="create">créer un compte</li>
+                </ol>
+            </nav>
+            {{else if eq .Auth true}}
+            <p>connecté</p>
+            {{end}}
+        </div>
     </div>
     <div id="header-transition"></div>
 
-    
-  </header>
+
+</header>
 <div class="forum_ctn">
     {{if eq .Auth true}}
     <button id="plus-div">
-      <img id="plus" src="/assets/img/bouton-plus.png" alt="bouton plus">
-      <p>créer un topic</p>
+        <img id="plus" src="/assets/img/bouton-plus.png" alt="bouton plus">
+        <p>créer un topic</p>
     </button>
     {{end}}
     <h1>Catégorie</h1>
     {{range .ListCat}}
-    <form action="" method="get">
-        <button  type="submit" value="{{.IDCat}}" class="box_ctn">
+    <form action="/categories" method="get">
+        <button type="submit"  name="Id" value="{{.IDCat}}" class="box_ctn">
             <img src={{.Url.String}} alt="logo">
             <div class="box_content">
                 <h3>{{.Titre.String}}</h3>
@@ -63,7 +63,7 @@
         <button type="submit" name="Id" value="{{.IDTopic}}" class="box_ctn">
             <div class="box_content">
                 <h3>{{.Titre.String}}</h3>
-                <h4 >{{.DateCreationString}}</h4>
+                <h4>{{.DateCreationString}}</h4>
             </div>
         </button>
     </form>
@@ -73,13 +73,8 @@
 
 
 </div>
-
-
-
 <div id="btn_topic" class="topic_ctn_unactive"></div>
-
 <footer>
-
     <div id="footer">
         <h3>Liens utiles</h3>
         <ul>

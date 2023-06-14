@@ -1,68 +1,65 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../assets/css/connexion.css" />
-    <link rel="stylesheet" href="../../assets/css/creation.css" />
-    <link rel="stylesheet" href="../../assets/css/header.css" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../assets/css/connexion.css"/>
+    <link rel="stylesheet" href="../../assets/css/creation.css"/>
+    <link rel="stylesheet" href="../../assets/css/header.css"/>
     <title>connexion</title>
-  </head>
-  <body>
-    <header>
-      <div id="header-content" class="header-content">
+</head>
+<body>
+<header>
+    <div id="header-content" class="header-content">
         <div id="header-menu">
-          <img class="logo" src="/assets/img/pngegg.png" alt="logo" />
-          <nav>
-            <ol>
-              <li><a href="/">Accueil</a></li>
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="condition.html">Conditions</a></li>
-            </ol>
-          </nav>
+            <img class="logo" src="/assets/img/pngegg.png" alt="logo"/>
+            <nav>
+                <ol>
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="condition.html">Conditions</a></li>
+                </ol>
+            </nav>
         </div>
         <div id="connexion-header-menu" class="header-content">
-          {{if eq .Auth false}}
-          <nav>
-            <ol>
-              <li><a href="/login">se connecter</a></li>
-              <li><a href="#">créer un compte</a></li>
-            </ol>
-          </nav>
-          {{else if eq .Auth true}}
-          <p>connecté</p>
-          {{end}}
+            {{if eq .Auth false}}
+            <nav>
+                <ol>
+                    <li><a href="/login">se connecter</a></li>
+                    <li><a href="#">créer un compte</a></li>
+                </ol>
+            </nav>
+            {{else if eq .Auth true}}
+            <p>connecté</p>
+            {{end}}
         </div>
-      </div>
-      <div id="header-transition"></div>
-    </header>
-    {{if eq .Auth false}}
-    <div id="connexion-div">
-      <h1>Connectez-vous</h1>
-
-      <form id="form-connexion" method="POST">
-        <div class="form-content">
-          <label for="email">pseudo:</label>
-          <input type="text" name="pseudo" id="email" />
-        </div>
-
-        <div class="form-content">
-          <label for="mdp">mot de passe :</label>
-          <input type="password" name="passwd" id="mdp" />
-        </div>
-
-        <input class="button" type="submit" value="valider" />
-      </form>
-      <p>Pas encore de compte ?</p>
-      <button id="switch-button">créer en un</button>
     </div>
-    {{else if eq .Auth true}}
-    <div id="connexion-div" class="true">
-      <p>vous êtes connecté</p>
-    </div>
-    {{end}}
-    <script src="/assets/js/connexion.js"></script>
-  </body>
+    <div id="header-transition"></div>
+</header>
+{{if eq .Auth false}}
+<div id="connexion-div">
+    <h1>Connectez-vous</h1>
+    <form id="form-connexion" method="POST">
+        <div class="form-content">
+            <label for="email">pseudo:</label>
+            <input type="text" name="pseudo" id="email"/>
+        </div>
+        <div class="form-content">
+            <label for="mdp">mot de passe :</label>
+            <input type="password" name="passwd" id="mdp"/>
+        </div>
+        <button class="button" type="submit" value="valider">Valider</button>
+    </form>
+    <p>Pas encore de compte ?</p>
+    <button id="switch-button">créer en un</button>
+</div>
+{{else if eq .Auth true}}
+<div class="true">
+    <p>vous êtes connecté</p>
+</div>
+{{end}}
+<script src="/assets/js/connexion.js"></script>
+</body>
 </html>
