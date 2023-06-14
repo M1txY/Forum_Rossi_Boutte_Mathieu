@@ -26,8 +26,8 @@
         {{if eq .Auth false}}
         <nav>
           <ol>
-            <li><a href="/login">se connecter</a></li>
-            <li><a href="#">créer un compte</a></li>
+            <li id="log">se connecter</li>
+            <li id="create">créer un compte</li>
           </ol>
         </nav>
         {{else if eq .Auth true}}
@@ -36,6 +36,8 @@
       </div>
     </div>
     <div id="header-transition"></div>
+
+    
   </header>
 <div class="forum_ctn">
     {{if eq .Auth true}}
@@ -94,5 +96,6 @@
 
 <script src="frontend/js/forum.js"></script>
 <script src="/assets/js/topic_btn.js"></script>
+<script src="/assets/js/header.js"></script>
 </body>
 </html>
