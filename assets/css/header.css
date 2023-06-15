@@ -13,6 +13,10 @@ header nav ol {
   header nav ol li {
     display: inline;
     margin-right: 10px;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    border: 1px solid transparent;
   
   }
   
@@ -66,4 +70,18 @@ header nav ol {
 
  .logo{
   max-height: 50px;
+ }
+
+ #log,#create {
+     text-decoration: none;
+     color: white;
+     padding: 5px;
+     border: 1px solid transparent;
+ }
+ 
+ #log:hover,#create:hover {
+     border: 1px solid #5896E4;
+     border-radius: 15%;
+     background-color: #5896e4;
+     padding: 5px;
  }
