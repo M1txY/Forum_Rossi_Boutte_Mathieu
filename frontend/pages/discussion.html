@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion</title>
+    <link rel="stylesheet" href="../../assets/css/header.css"/>
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
+    <link rel="stylesheet" href="../../assets/css/discussion.css"/>
+</head>
+<body>
+    <div id="header-content" class="header-content">
+        <div id="header-menu">
+            <img class="logo" src="/assets/img/pngegg.png" alt="logo"/>
+            
+            <nav>
+                <ol>
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="condition.html">Conditions</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div id="connexion-header-menu" class="header-content">
+            {{if eq .Auth false}}
+            <nav>
+                <ol>
+                    <li id="log">se connecter</li>
+                    <li id="create">créer un compte</li>
+                </ol>
+            </nav>
+            {{else if eq .Auth true}}
+            <p>connecté</p>
+            {{end}}
+        </div>
+    </div>
+    <div id="header-transition">
+        <p>Sporum</p>
+    </div>
+    
+    <div class="message_ctn">
+        <div class="message">
+            <div class="message_header">
+                <div class="message_header_left">
+                    <img src="/assets/img/pngegg.png" alt="logo">
+                    <p>username</p>
+                </div>
+                <div class="message_header_right">
+                    <p>date</p>
+                </div>
+            </div>
+            <div class="message_content">
+                <p>message</p>
+            </div>
+        </div>
+        <div class="message">
+            <div class="message_header">
+                <div class="message_header_left">
+                    <img src="/assets/img/pngegg.png" alt="logo">
+                    <p>username</p>
+                </div>
+                <div class="message_header_right">
+                    <p>date</p>
+                </div>
+            </div>
+            <div class="message_content">
+                <p>message</p>
+            </div>
+        </div>
+        <div class="message">
+            <div class="message_header">
+                <div class="message_header_left">
+                    <img src="/assets/img/pngegg.png" alt="logo">
+                    <p>username</p>
+                </div>
+                <div class="message_header_right">
+                    <p>date</p>
+                </div>
+            </div>
+            <div class="message_content">
+                <p>message</p>
+            </div>
+        </div>
+        <div class="message">
+            <div class="message_header">
+                <div class="message_header_left">
+                    <img src="/assets/img/pngegg.png" alt="logo">
+                    <p>username</p>
+                </div>
+                <div class="message_header_right">
+                    <p>date</p>
+                </div>
+            </div>
+            <div class="message_content">
+                <p>message</p>
+            </div>
+        </div>
+        <div class="message">
+            <div class="message_header">
+                <div class="message_header_left">
+                    <img src="/assets/img/pngegg.png" alt="logo">
+                    <p>username</p>
+                </div>
+                <div class="message_header_right">
+                    <p>date</p>
+                </div>
+            </div>
+            <div class="message_content">
+                <p>message</p>
+            </
+
+    </div>
+
+
+</body>
+</html>
