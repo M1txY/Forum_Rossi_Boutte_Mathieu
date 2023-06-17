@@ -101,6 +101,7 @@ body{
     justify-content: space-between;
     width: 50%;
     height: 50%;
+    transition: 2s;
 }
 
 .topic_ctn_unactive{
