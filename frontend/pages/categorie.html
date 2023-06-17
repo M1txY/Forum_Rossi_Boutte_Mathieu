@@ -9,7 +9,6 @@
     <title>Document</title>
   </head>
   <body>
-    
     <header>
       <div id="header-content" class="header-content">
         <div id="header-menu">
@@ -34,33 +33,54 @@
       </div>
       <div id="header-transition"></div>
     </header>
+    <div id="content">
+    {{if eq .Auth true}}
+    <div id="plus">
+      <img src="/assets/img/bouton-plus.png" alt="bouton plus" />
+      <p>créer un topic</p>
+    </div>
+    {end}
 
     <div id="topic-content">
       <div id="topic-list">
-        
+
+        <div class="topic">
+          
+        </div>
+
+        {{range .listTopic}}
+        <form action="/topic" method="get">
+          <button type="submit" name="Id" value="{{.IDTopic}}" class="topic">
+            <h3>{{.Titre.String}}</h3>
+            <span>{{.DateCreationString}}</span>
+          </button>
+      </form>
+      {{end}}
       </div>
     </div>
-        {{if eq .Auth true}}
-        <div id="plus">
-          <img src="/assets/img/bouton-plus.png" alt="bouton plus" />
-        </div>
-        {end}
+
     <div id="new-topic">
       <div id="nex-topic-content">
-      <h1>créer un nouveau topic</h1>
-      <form method="post" id="topic-form">
-        <div class="input">
-      <label for="new-topic-title">Titre du topic :</label>
-      <input id="new-topic-title"  type="text">
-        </div><div class="input">
-      <label for="first-message">Quel est le premier message :</label>
-      <input id="first-message" type="text">
-      </div>
-      <input class="input" id="new-topic-subbmit" type="submit" value="valider">
-      </form>
+        <h1>créer un nouveau topic</h1>
+        <form method="post" id="topic-form">
+          <div class="input">
+            <label for="new-topic-title">Titre du topic :</label>
+            <input id="new-topic-title" type="text" />
+          </div>
+          <div class="input">
+            <label for="first-message">Quel est le premier message :</label>
+            <input id="first-message" type="text" />
+          </div>
+          <input
+            class="input"
+            id="new-topic-subbmit"
+            type="submit"
+            value="valider"
+          />
+        </form>
       </div>
     </div>
-    
+</div>
     <script src="/assets/js/categorie.js"></script>
   </body>
 </html>
