@@ -37,3 +37,29 @@
 .message_content {
     padding: 10px;
 }
+
+.message_actions {
+    display: flex;
+    padding: 10px;
+}
+
+.btn_like, .btn_repost {
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn_like {
+    background-color: #ff4500; /* couleur d'arrière-plan pour le bouton Like */
+}
+
+.btn_repost {
+    background-color: #008080; /* couleur d'arrière-plan pour le bouton Repost */
+}
+
+.btn_like:hover, .btn_repost:hover {
+    opacity: 0.8;
+}
+
