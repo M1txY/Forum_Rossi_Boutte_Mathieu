@@ -54,18 +54,19 @@ func TopicByCat(db *sql.DB, id_cat int) struct {
 	Auth       bool
 	Reponse    string
 } {
-	data, err := db.Query("SELECT * from topic as t JOIN own as o ON t.id_topic= o.id_topic  JOIN category as c ON c.id_cat =o.id_cat  WHERE c.id_cat =?", string(id_cat))
+	data, err := db.Query("SELECT t.id_topic,t.titre,t.Date_creation,t.id_user from topic as t LEFT JOIN own as o ON t.id_topic= o.id_topic LEFT JOIN category as c ON c.id_cat =o.id_cat WHERE c.id_cat =?", id_cat)
 	if err != nil {
 		fmt.Print(err)
 	}
 	var listTopic []Topic
 	for data.Next() {
-		var Topic Topic
-		err := data.Scan(&Topic.IDTopic, &Topic.Titre, &Topic.IDUser, &Topic.DateCreation)
+		var topic Topic
+		err := data.Scan(&topic.IDTopic, &topic.Titre, &topic.DateCreation, &topic.IDUser)
+		topic.DateCreationString = topic.DateCreation.Format("2006-01-02 15:04:05")
 		if err != nil {
-			panic(err.Error())
+			fmt.Println(err.Error())
 		}
-		listTopic = append(listTopic, Topic)
+		listTopic = append(listTopic, topic)
 	}
 	var TopicStruct = struct {
 		ListeTopic []Topic
@@ -85,7 +86,7 @@ func MesssageForTopic(db *sql.DB, id_topic int) struct {
 	Reponse string
 } {
 
-	data, err := db.Query("SELECT * FROM message as m JOIN contains as c ON m.id_mess=c.id_mess JOIN topic as t ON t.id_topic= c.id_topic WHERE t.id_topic =?", id_topic)
+	data, err := db.Query("SELECT m.id_mess,m.Contenu,m.Update_,m.nombre_like,m.Date_creation,m.id_user FROM message as m JOIN contain as c ON m.id_mess=c.id_mess JOIN topic as t ON t.id_topic= c.id_topic WHERE t.id_topic =?", id_topic)
 	if err != nil {
 		fmt.Print(err)
 	}

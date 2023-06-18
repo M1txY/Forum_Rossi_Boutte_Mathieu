@@ -53,8 +53,14 @@ func CreateMessage(db *sql.DB, contenu string, date string, id_user int, id_topi
 	}
 	var nb_message int
 	for result.Next() {
-		fmt.Println(result.Scan(&nb_message))
+		err := result.Scan(&nb_message)
+		if err != nil {
+			fmt.Println(err)
+		}
 		fmt.Println(nb_message)
 	}
-	db.Exec("INSERT INTO `contain`(`id_topic`, `id_mess`) values (?,?)", id_topic, nb_message)
+	_, erre := db.Exec("INSERT INTO `contain`(`id_topic`, `id_mess`) values (?,?)", id_topic, nb_message)
+	if erre != nil {
+		return
+	}
 }
