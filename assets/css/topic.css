@@ -1,4 +1,59 @@
-body{
+body {
     background-color: #161a21;
     color: white;
+}
+
+#content {
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+}
+
+#topic-title {
+    margin-bottom: 20px;
+}
+
+#topic-title h1 {
+    color: #333;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#messages-list {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+}
+
+.message {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.message:last-child {
+    border-bottom: none;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.messages-content {
+    margin: 0 10px;
+    color: #666;
+}
+
+.date {
+    color: #999;
+    font-size: 0.8em;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10%;
 }
