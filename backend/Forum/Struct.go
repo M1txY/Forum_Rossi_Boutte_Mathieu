@@ -30,7 +30,7 @@ type Own struct {
 type Message struct {
 	IDMess            int
 	Contenu           sql.NullString
-	Update            time.Time
+	Update            sql.NullTime
 	UpdateParse       string
 	NombreLike        sql.NullInt64
 	DateCreation      time.Time

@@ -79,7 +79,7 @@ func LoginPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func TopicPAge(w http.ResponseWriter, r *http.Request) {
-	tmpl_index := template.Must(template.ParseFiles("../frontend/pages/discussion.html"))
+	tmpl_index := template.Must(template.ParseFiles("../frontend/pages/topic.html"))
 	IdTopic, erre := strconv.Atoi(r.URL.Query().Get("Id"))
 	fmt.Println(IdTopic)
 	if erre != nil {

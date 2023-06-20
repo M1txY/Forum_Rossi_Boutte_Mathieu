@@ -93,9 +93,8 @@ func MesssageForTopic(db *sql.DB, id_topic int) struct {
 	var listMessage []Message
 	for data.Next() {
 		var mess Message
-		err := data.Scan(&mess.IDMess, &mess.Contenu, &mess.IDUser, &mess.DateCreation, &mess.NombreLike, &mess.Update)
+		err := data.Scan(&mess.IDMess, &mess.Contenu, &mess.Update,&mess.NombreLike, &mess.DateCreation,&mess.IDUser)
 		mess.DateCreationParse = mess.DateCreation.Format("2006-01-02 15:04:05")
-		mess.UpdateParse = mess.Update.Format("2006-01-02 15:04:05")
 		if err != nil {
 			panic(err.Error())
 		}
