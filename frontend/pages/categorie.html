@@ -1,66 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/css/header.css" />
-    <link rel="stylesheet" href="/assets/css/categorie.css" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/assets/css/header.css"/>
+    <link rel="stylesheet" href="/assets/css/categorie.css"/>
     <title>Document</title>
-  </head>
-  <body>
-    
-    <header>
-      <div id="header-content" class="header-content">
+</head>
+<body>
+<header>
+    <div id="header-content" class="header-content">
         <div id="header-menu">
-          <img src="" alt="logo" />
-          <nav>
-            <ol>
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="condition.html">Conditions</a></li>
-            </ol>
-          </nav>
+            <img src="" alt="logo"/>
+            <nav>
+                <ol>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="condition.html">Conditions</a></li>
+                </ol>
+            </nav>
         </div>
         <div id="connexion-header-menu" class="header-content">
-          <nav>
-            <ol>
-              <li><a href="connexion.html">se connecter</a></li>
-              <li><a href="#">créer un compte</a></li>
-            </ol>
-          </nav>
+            <nav>
+                <ol>
+                    <li><a href="connexion.html">se connecter</a></li>
+                    <li><a href="#">créer un compte</a></li>
+                </ol>
+            </nav>
         </div>
-      </div>
-      <div id="header-transition"></div>
-    </header>
+    </div>
+    <div id="header-transition"></div>
+</header>
+<div id="content">
+    {{if eq .Auth true}}
+    <div id="plus">
+        <img src="/assets/img/bouton-plus.png" alt="bouton plus"/>
+        <p>créer un topic</p>
+    </div>
+    {{end}}
 
     <div id="topic-content">
-      <div id="topic-list">
-        
-      </div>
-    </div>
-        {{if eq .Auth true}}
-        <div id="plus">
-          <img src="/assets/img/bouton-plus.png" alt="bouton plus" />
+        <div id="topic-list">
+            <div class="topic">
+                {{range .ListeTopic}}
+
+                <form action="/topic" method="get">
+                    <button type="submit" name="Id" value="{{.IDTopic}}" class="topic">
+                        <h3>{{.Titre.String}}</h3>
+                        <span>{{.DateCreationString}}</span>
+                    </button>
+                </form>
+                {{end}}
+            </div>
         </div>
-        {end}
-    <div id="new-topic">
-      <div id="nex-topic-content">
-      <h1>créer un nouveau topic</h1>
-      <form method="post" id="topic-form">
-        <div class="input">
-      <label for="new-topic-title">Titre du topic :</label>
-      <input id="new-topic-title"  type="text">
-        </div><div class="input">
-      <label for="first-message">Quel est le premier message :</label>
-      <input id="first-message" type="text">
-      </div>
-      <input class="input" id="new-topic-subbmit" type="submit" value="valider">
-      </form>
-      </div>
+
+        <div id="new-topic">
+            <div id="nex-topic-content">
+                <h1>créer un nouveau topic</h1>
+                <form method="post" id="topic-form">
+                    <div class="input">
+                        <label for="new-topic-title">Titre du topic :</label>
+                        <input id="new-topic-title" type="text"/>
+                    </div>
+                    <div class="input">
+                        <label for="first-message">Quel est le premier message :</label>
+                        <input id="first-message" type="text"/>
+                    </div>
+                    <input class="input" id="new-topic-subbmit" type="submit" value="valider"/>
+                </form>
+            </div>
+        </div>
     </div>
-    
     <script src="/assets/js/categorie.js"></script>
-  </body>
+</body>
 </html>

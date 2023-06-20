@@ -75,7 +75,7 @@ body{
     margin-top: 5px;
 }
 
-#switch-button{
+.button{
     margin-top: 15px;
     background-color: #3b84df;
     border: #3b84df 1px solid;
@@ -85,7 +85,7 @@ body{
 
 }
 
-#switch-button:hover{
+.button:hover{
     background-color: #5896e4;
     cursor: pointer;
 }

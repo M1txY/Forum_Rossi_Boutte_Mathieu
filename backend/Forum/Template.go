@@ -34,7 +34,7 @@ func LandinPage(w http.ResponseWriter, r *http.Request) {
 
 func LoginPage(w http.ResponseWriter, r *http.Request) {
 	db, err := sql.Open("mysql",
-		"root@tcp(127.0.0.1:3306)/forum")
+		"root@tcp(127.0.0.1:3306)/forum?parseTime=true")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -79,14 +79,14 @@ func LoginPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func TopicPAge(w http.ResponseWriter, r *http.Request) {
-	tmpl_index := template.Must(template.ParseFiles("../frontend/pages/topic.html"))
+	tmpl_index := template.Must(template.ParseFiles("../frontend/pages/discussion.html"))
 	IdTopic, erre := strconv.Atoi(r.URL.Query().Get("Id"))
 	fmt.Println(IdTopic)
 	if erre != nil {
 		fmt.Println(erre)
 	}
 	db, err := sql.Open("mysql",
-		"root@tcp(127.0.0.1:3306)/forum")
+		"root@tcp(127.0.0.1:3306)/forum?parseTime=true")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -111,11 +111,12 @@ func CatPage(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(erre)
 	}
 	db, err := sql.Open("mysql",
-		"root@tcp(127.0.0.1:3306)/forum")
+		"root@tcp(127.0.0.1:3306)/forum?parseTime=true")
 	if err != nil {
 		log.Fatal(err)
 	}
 	data := TopicByCat(db, IdTCat)
+	fmt.Println(data)
 	c, erreur := r.Cookie("id_user")
 
 	if erreur != nil {
