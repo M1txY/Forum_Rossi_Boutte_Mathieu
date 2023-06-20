@@ -4,12 +4,20 @@
 }
 
 #plus {
-  width: 150px;
+  position: absolute;
+  width: 100px;
   height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  right: 5%;
+  bottom: 5%;
+}
+
+#plus:hover {
+  cursor: pointer;
 }
 
 #plus img {
